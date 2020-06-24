@@ -20,12 +20,23 @@ jobs:
         chmod -R 777 IBM_Cloud_CLI/
         IBM_Cloud_CLI/ibmcloud cf install
 
-    - name: Login IBM CF
+    - name: Login IBM Syo
       run: |
         IBM_Cloud_CLI/ibmcloud login -u ${{ secrets.ACCOUNT }} -p ${{ secrets.PWD }} -r ${{ secrets.REGION }}
 
-    - name: Restart IBM CF
+    - name: Restart IBM Syo
       run: |
         IBM_Cloud_CLI/ibmcloud target -g Default
         IBM_Cloud_CLI/ibmcloud target --cf
         IBM_Cloud_CLI/ibmcloud cf restart ${{ secrets.APP_NAME }}
+
+
+    - name: Login IBM Nice
+      run: |
+        IBM_Cloud_CLI/ibmcloud login -u ${{ secrets.ACCOUNT2 }} -p ${{ secrets.PWD }} -r ${{ secrets.REGION }}
+
+    - name: Restart IBM Nice
+      run: |
+        IBM_Cloud_CLI/ibmcloud target -g Default
+        IBM_Cloud_CLI/ibmcloud target --cf
+        IBM_Cloud_CLI/ibmcloud cf restart ${{ secrets.APP_NAME2 }}
