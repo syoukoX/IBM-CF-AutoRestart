@@ -40,3 +40,14 @@ jobs:
         IBM_Cloud_CLI/ibmcloud target -g Default
         IBM_Cloud_CLI/ibmcloud target --cf
         IBM_Cloud_CLI/ibmcloud cf restart ${{ secrets.APP_NAME2 }}
+
+
+    - name: Login IBM Boom
+      run: |
+        IBM_Cloud_CLI/ibmcloud login -u ${{ secrets.ACCOUNT3 }} -p ${{ secrets.PWD }} -r ${{ secrets.REGION }}
+
+    - name: Restart IBM Boom
+      run: |
+        IBM_Cloud_CLI/ibmcloud target -g Default
+        IBM_Cloud_CLI/ibmcloud target --cf
+        IBM_Cloud_CLI/ibmcloud cf restart ${{ secrets.APP_NAME3 }}
